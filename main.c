@@ -31,7 +31,7 @@ void pedirValores(int valor[], int tamanho) {
         printf("Digite a %dª temperatura (°C): ", i + 1);
         valido = scanf("%d", &valor[i]);
         if(valido != 1){
-            printf("Entrada inválida! Digite um número inteiro.");
+            printf("\nEntrada inválida! Digite um número inteiro.");
         }
             while (getchar() != '\n'){
         }
