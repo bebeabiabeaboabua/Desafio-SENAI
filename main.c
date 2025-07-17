@@ -11,7 +11,7 @@ de uma faixa ideal de operação, previamente definida.
 Esse tipo de aplicação é comum em ambientes industriais, onde sensores capturam dados constantemente,
 e a análise correta dessas informações garante o funcionamento eficiente e seguro de equipamentos.
 
-
+ 
 
 Desafio
 Você deverá desenvolver, em linguagem C, um programa que:
@@ -26,17 +26,34 @@ Você deverá desenvolver, em linguagem C, um programa que:
 
 void pedirValores(int valor[], int tamanho) {
     for (int i = 0; i < tamanho; i++) {
-        printf("Digite a %dº temperatura: ", i + 1);
-        scanf("%d", &valor[i]);
+        int valido;
+        do{
+        printf("Digite a %dª temperatura (°C): ", i + 1);
+        valido = scanf("%d", &valor[i]);
+        if(valido != 1){
+            printf("Entrada inválida! Digite um número inteiro.");
+        }
+            while (getchar() != '\n'){
+        }
+        }while(valido != 1);
     }
 }
 
 void pedirLimite(int *limiteInferior, int *limiteSuperior) {
-    printf("Digite o limite inferior: ");
-    scanf("%d", limiteInferior);
-    printf("Digite o limite superior: ");
-    scanf("%d", limiteSuperior);
+    do {
+        printf("Digite o limite inferior da faixa ideal (°C): ");
+        scanf("%d", limiteInferior);
+
+        printf("Digite o limite superior da faixa ideal (°C): ");
+        scanf("%d", limiteSuperior);
+
+        if (*limiteSuperior < *limiteInferior) {
+            printf("\n⚠️  O limite superior não pode ser menor que o limite inferior!\nTente novamente.\n\n");
+        }
+
+    } while (*limiteSuperior < *limiteInferior);
 }
+
 
 int verificarValores(int valores[], int tamanho, int limiteInferior, int limiteSuperior, int valoresIdeais[]) {
     int contador = 0;
@@ -60,12 +77,12 @@ int main() {
 
     dentroDaFaixa = verificarValores(valores, 10, limiteInferior, limiteSuperior, valoresIdeais);
 
-    printf("\nTemperaturas dentro da faixa (%d a %d):\n", limiteInferior, limiteSuperior);
+    printf("\nTemperaturas dentro da faixa ideal (%d°C a %d°C):\n", limiteInferior, limiteSuperior);
     for (int i = 0; i < dentroDaFaixa; i++) {
-        printf("%d ", valoresIdeais[i]);
+        printf("%d°C ", valoresIdeais[i]);
     }
 
-    printf("\nTotal de temperaturas dentro da faixa ideal: %d\n", dentroDaFaixa);
+    printf("\n\nTotal de temperaturas dentro da faixa ideal: %d\n", dentroDaFaixa);
 
     return 0;
 }
