@@ -11,7 +11,7 @@ de uma faixa ideal de operação, previamente definida.
 Esse tipo de aplicação é comum em ambientes industriais, onde sensores capturam dados constantemente,
 e a análise correta dessas informações garante o funcionamento eficiente e seguro de equipamentos.
 
- 
+
 
 Desafio
 Você deverá desenvolver, em linguagem C, um programa que:
@@ -26,7 +26,7 @@ Você deverá desenvolver, em linguagem C, um programa que:
 
 void pedirValores(int valor[], int tamanho) {
     for (int i = 0; i < tamanho; i++) {
-        printf("Digite o %dº número: ", i + 1);
+        printf("Digite a %dº temperatura: ", i + 1);
         scanf("%d", &valor[i]);
     }
 }
@@ -60,29 +60,12 @@ int main() {
 
     dentroDaFaixa = verificarValores(valores, 10, limiteInferior, limiteSuperior, valoresIdeais);
 
-    printf("\nValores dentro da faixa (%d a %d):\n", limiteInferior, limiteSuperior);
+    printf("\nTemperaturas dentro da faixa (%d a %d):\n", limiteInferior, limiteSuperior);
     for (int i = 0; i < dentroDaFaixa; i++) {
         printf("%d ", valoresIdeais[i]);
     }
 
-    printf("\nTotal de medições dentro da faixa ideal: %d\n", dentroDaFaixa);
+    printf("\nTotal de temperaturas dentro da faixa ideal: %d\n", dentroDaFaixa);
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
